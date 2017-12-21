@@ -1,2 +1,74 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$grey: #f1f1f1;
+$dark-grey: #555;
+
+body {
+  background: $dark-grey;
+  font-family: sans-serif;
+  font-size: 18px;
+  margin: 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+}
+
+header {
+  text-align: center;
+}
+
+.heads-up {
+  background: $grey;
+  margin: 0 auto;
+  min-height: 40px;
+  min-width: 320px;
+  width: 50%;
+
+  p {
+    float: left;
+  }
+
+  button {
+    float: right;
+    height: 40px;
+  }
+}
+
+main {
+  height: 320px;
+  margin: 30px auto;
+  width: 320px;
+}
+
+.grid-box {
+  border: 3px $grey dotted;
+  box-sizing: border-box;
+  float: left;
+  height: 106px;
+  width: 106px;
+
+  &:hover {
+    background-color: $grey;
+  }
+}
+
+.letter-display {
+  font-size: 4em;
+  font-weight: 800;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+#mast-head {
+  float: left;
+  padding: 20px;
+  width: 20%;
+}
+
+input{
+  width: 200px;
+}
