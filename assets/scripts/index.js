@@ -2,14 +2,24 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const events = require('./events')
+const event = require('./events')
 
 $(() => {
   setAPIOrigin(location, config)
 })
 
 $(() => {
-  $('.grid-box').on('click', events.onCheckBox)
+  $('.heads-up p').text('its player X\'s turn to move.')
+  $('.clickable').on('click', event.onCheckBox)
+  $('#new-game-btn').on('click', event.restGame)
+  $('#sign-in').on('submit', function (event) {
+    event.preventDefault()
+    console.log('submit')
+  })
+  $('#sign-up').on('submit', function (event) {
+    event.preventDefault()
+    console.log('submit')
+  })
 })
 
 // event handles the click and toggles the player turn

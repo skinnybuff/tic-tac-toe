@@ -19,38 +19,45 @@
             Tic-Tac-Toe
           </h1>
         </header>
-        <section id="mast-head">
-          <img src="https://picsum.photos/150/150" alt="Game Logo"/>
-          <form>
-            <input type="text" placeholder="email"/>
-            <input type="password" placeholder="password"/>
+        <section class="mast-head">
+          <img src="https://picsum.photos/200/220" alt="Game Logo"/>
+          <form id="sign-in">
+            <input type="text" name="credentials[email]" placeholder="email"/>
+            <input type="password" name="credentials[password]" placeholder="password"/>
             <button type="submit">Log In</button>
+          </form>
+          <br>
+          <form id="sign-up">
+            <input type="text" name="credentials[email]" placeholder="email"/>
+            <input type="password" name="credentials[password]" placeholder="password"/>
+            <input type="password" name="credentials[password_confirmation]" placeholder="retype password"/>
+            <button type="submit">Sign Up</button>
           </form>
         </section>
         <main>
-          <div class = "grid-box" data-grid-position="0">
+          <div class = "grid-box clickable" data-grid-position="0">
           </div>
-          <div class = "grid-box" data-grid-position="1">
+          <div class = "grid-box clickable" data-grid-position="1">
           </div>
-          <div class = "grid-box" data-grid-position="2">
+          <div class = "grid-box clickable" data-grid-position="2">
           </div>
-          <div class = "grid-box" data-grid-position="3">
+          <div class = "grid-box clickable" data-grid-position="3">
           </div>
-          <div class = "grid-box" data-grid-position="4">
+          <div class = "grid-box clickable" data-grid-position="4">
           </div>
-          <div class = "grid-box" data-grid-position="5">
+          <div class = "grid-box clickable" data-grid-position="5">
           </div>
-          <div class = "grid-box" data-grid-position="6">
+          <div class = "grid-box clickable" data-grid-position="6">
           </div>
-          <div class = "grid-box" data-grid-position="7">
+          <div class = "grid-box clickable" data-grid-position="7">
           </div>
-          <div class = "grid-box" data-grid-position="8">
+          <div class = "grid-box clickable" data-grid-position="8">
           </div>
         </main>
         <section class ="heads-up">
           <p>
           </p>
-          <button>
+          <button id="new-game-btn">
             New Game
           </button>
         </section>

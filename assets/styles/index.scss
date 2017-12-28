@@ -48,6 +48,7 @@ main {
   box-sizing: border-box;
   float: left;
   height: 106px;
+  user-select: none;
   width: 106px;
 
   &:hover {
@@ -63,12 +64,16 @@ main {
   width: 100%;
 }
 
-#mast-head {
+.mast-head {
   float: left;
   padding: 20px;
   width: 20%;
+
+  img {
+    margin-bottom: 30px;
+  }
 }
 
-input{
+input {
   width: 200px;
 }
