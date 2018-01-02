@@ -1,34 +1,34 @@
 'use strict'
 const getFormFields = require(`../../lib/get-form-fields`)
-const game = require('./engine')
+const engine = require('./engine')
 const api = require('./api')
 const ui = require('./ui')
 
 const onCheckBox = function () {
-  // console.log(game.playerXturn)
+  // console.log(engine.playerXturn)
   // check if the position is occupiued
-  if (game.gameBoard[game.getLocation(this)] !== null) {
+  if (engine.game.gameBoard[engine.getLocation(this)] !== null) {
     $('.heads-up p').text('please select and empty box.')
   } else {
-    if (game.playerXturn) {
+    if (engine.game.playerXturn) {
       // for player X update gamedisplay, gamboard, ui & change player turn
       $('.heads-up p').text('its player O\'s turn to move.')
       $(this).html(ui.userTokenX)
-      game.gameBoard[game.getLocation(this)] = 'X'
-      game.playerXturn = !game.playerXturn
+      engine.game.gameBoard[engine.getLocation(this)] = 'X'
+      engine.game.playerXturn = !engine.game.playerXturn
     } else {
       // for player O update gamedisplay, gamboard, ui & change player turn
       $('.heads-up p').text('its player X\'s turn to move.')
       $(this).html(ui.userTokenO)
-      game.gameBoard[game.getLocation(this)] = 'O'
-      game.playerXturn = !game.playerXturn
+      engine.game.gameBoard[engine.getLocation(this)] = 'O'
+      engine.game.playerXturn = !engine.game.playerXturn
     }
   }
 
-  game.checkWin()
-  // console.log(game.gameBoard)
-  // console.log(game.getLocation(this))
-  // console.log(game.playerXturn)
+  engine.checkWin()
+  // console.log(engine.game.gameBoard)
+  // console.log(engine.game.getLocation(this))
+  // console.log(engine.game.playerXturn)
 }
 
 const onSignIn = function (event) {
@@ -50,12 +50,12 @@ const onSignUp = function (event) {
 }
 
 const restGame = function () {
-  // console.log(game.gameBoard)
-  game.gameBoard = [null, null, null, null, null, null, null, null, null]
+  // console.log(engine.game.gameBoard)
+  engine.game.gameBoard = [null, null, null, null, null, null, null, null, null]
   ui.uiReset()
-  game.playerXturn = true
-  game.gameOver = false
-  // console.log(game.gameBoard)
+  engine.game.playerXturn = true
+  engine.game.gameOver = false
+  // console.log(engine.gameBoard)
 }
 
 module.exports = {

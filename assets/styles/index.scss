@@ -16,14 +16,6 @@ $roboto: 'Roboto Condensed', sans-serif;
   box-shadow: 4px 4px $dark-purple;
 }
 
-body {
-  background: linear-gradient($purple, $dark-purple);
-  font-family: $roboto;
-  font-size: 18px;
-  height: 1000px;
-  margin: 40px 5px;
-}
-
 a {
   color: $green;
   margin: 0 auto;
@@ -38,13 +30,26 @@ a {
   }
 }
 
-.inactive {
-  color: $dark-purple;
-  }
+body {
+  background: linear-gradient($purple, $dark-purple);
+  font-family: $roboto;
+  font-size: 18px;
+  height: 1000px;
+  margin: 40px 5px;
+}
 
-.wrapper {
-  margin: 0 auto;
-  width: 80%;
+button {
+  background: $green;
+  border: 0;
+}
+
+.ctr-col {
+  @include section-style;
+  float: left;
+  margin: 1px 20px;
+  min-width: 472px;
+  padding: 20px;
+  width: 55%;
 }
 
 focus {
@@ -56,6 +61,37 @@ form {
     margin-left: 4px;
     margin-top: 4px;
   }
+}
+
+.game-meta {
+  @include section-style;
+  color: $grey;
+  float: right;
+  height: 500px;
+  min-width: 250px;
+  padding: 10px 20px;
+
+  ul {
+    font-family: $roboto;
+    list-style: none;
+    margin-top: 30px;
+  }
+}
+
+.grid-box {
+  box-sizing: border-box;
+  float: left;
+  height: 106px;
+  user-select: none;
+  width: 106px;
+
+  &:hover {
+    background-color: $green;
+  }
+}
+
+.grid-style {
+  border: 3px $dark-purple dotted;
 }
 
 header {
@@ -86,36 +122,18 @@ header {
   }
 }
 
-main {
-  height: 320px;
-  margin: 30px auto;
-  width: 320px;
+.inactive {
+  color: $dark-purple;
 }
 
-.grid-box {
-  box-sizing: border-box;
-  float: left;
-  height: 106px;
-  user-select: none;
-  width: 106px;
-
-  &:hover {
-    background-color: $green;
-  }
-}
-
-.grid-style {
-  border: 3px $dark-purple dotted;
-}
-
-.style-vert {
-  border-bottom: 0;
-  border-top: 0;
-}
-
-.style-hori {
-  border-left: 0;
-  border-right: 0;
+input {
+  background: $transparent;
+  border: 0;
+  border-bottom: 1px solid $green;
+  color: $grey;
+  margin: 4px;
+  padding: 4px;
+  width: 200px;
 }
 
 .letter-display {
@@ -128,9 +146,10 @@ main {
   width: 100%;
 }
 
-button {
-  background: $green;
-  border: 0;
+main {
+  height: 320px;
+  margin: 30px auto;
+  width: 320px;
 }
 
 .mast-head {
@@ -145,35 +164,17 @@ button {
   }
 }
 
-input {
-  background: $transparent;
-  border: 0;
-  border-bottom: 1px solid $green;
-  margin: 4px;
-  padding: 4px;
-  width: 200px;
+.style-hori {
+  border-left: 0;
+  border-right: 0;
 }
 
-.game-meta {
-  @include section-style;
-  color: $grey;
-  float: right;
-  height: 500px;
-  min-width: 250px;
-  padding: 10px 20px;
-
-  ul {
-    font-family: $roboto;
-    list-style: none;
-    margin-top: 30px;
-  }
+.style-vert {
+  border-bottom: 0;
+  border-top: 0;
 }
 
-.ctr-col {
-  @include section-style;
-  float: left;
-  margin: 1px 20px;
-  min-width: 472px;
-  padding: 20px;
-  width: 55%;
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
 }
