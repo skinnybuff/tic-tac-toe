@@ -4,20 +4,20 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 $grey: #ddd;
 $dark-grey: #555;
-$purple: #643f93;
-$dark-purple: #472967;
-$green: #25d6ac;
+$main-color: #2d649e;
+$dark-main-color: #1a2d54;
+$accent-color: #67ea85;
 $transparent: rgba(0, 0, 0, 0);
 $rubik: 'Rubik Mono One', sans-serif;
 $roboto: 'Roboto Condensed', sans-serif;
 
-@mixin section-style() {
-  border: 2px solid $dark-purple;
-  box-shadow: 4px 4px $dark-purple;
+@mixin section-style {
+  border: 2px solid $dark-main-color;
+  box-shadow: 4px 4px $dark-main-color;
 }
 
 a {
-  color: $green;
+  color: $accent-color;
   margin: 0 auto;
   padding: 8px;
   text-align: center;
@@ -31,7 +31,7 @@ a {
 }
 
 body {
-  background: linear-gradient($purple, $dark-purple);
+  background: linear-gradient($main-color, $dark-main-color);
   font-family: $roboto;
   font-size: 18px;
   height: 1000px;
@@ -39,7 +39,7 @@ body {
 }
 
 button {
-  background: $green;
+  background: $accent-color;
   border: 0;
 }
 
@@ -86,16 +86,16 @@ form {
   width: 106px;
 
   &:hover {
-    background-color: $green;
+    background-color: $accent-color;
   }
 }
 
 .grid-style {
-  border: 3px $dark-purple dotted;
+  border: 3px $dark-main-color dotted;
 }
 
 header {
-  color: $green;
+  color: $accent-color;
   font-family: $rubik;
   text-align: center;
   text-shadow: 3px  3px $grey;
@@ -123,13 +123,13 @@ header {
 }
 
 .inactive {
-  color: $dark-purple;
+  color: $dark-main-color;
 }
 
 input {
   background: $transparent;
   border: 0;
-  border-bottom: 1px solid $green;
+  border-bottom: 1px solid $accent-color;
   color: $grey;
   margin: 4px;
   padding: 4px;

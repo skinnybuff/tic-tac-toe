@@ -25,18 +25,19 @@ const checkWin = function () {
     solutions.forEach(function (solution) {
       // console.log('A: ' + solution[0] + ' B: ' + solution[1] + ' C: ' + solution[2])
       if (game.gameBoard[solution[0]] === 'X' && game.gameBoard[solution[1]] === 'X' && game.gameBoard[solution[2]] === 'X') {
-        console.log('X Wins!')
+        // console.log('X Wins!')
         gameWon('X')
       }
 
       if (game.gameBoard[solution[0]] === 'O' && game.gameBoard[solution[1]] === 'O' && game.gameBoard[solution[2]] === 'O') {
-        console.log('O Wins!')
+        // console.log('O Wins!')
         gameWon('O')
       }
     })
+    // add a check for a tied game
   } else {
-    // $('.heads-up p').text('pleasse start a new game.')
-    console.log('please start a new game.')
+    // console.log('please start a new game.')
+    ui.headsUp('Please start a new game.')
   }
 }
 // get the location of the play from the gameboard data attribute

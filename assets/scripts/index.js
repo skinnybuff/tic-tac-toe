@@ -13,6 +13,7 @@ $(() => {
   $('#new-game-btn').on('click', event.restGame)
   $('#sign-in').on('submit', event.onSignIn)
   $('#sign-up').on('submit', event.onSignUp)
+// while gameover is false boxes not clickable
 })
 
 // event handles the click and toggles the player turn

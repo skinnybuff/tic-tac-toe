@@ -1,6 +1,7 @@
 'use stric'
 
 const engine = require('./engine')
+const store = require('./store')
 
 // html partials to append the markers to the game board
 const userTokenX = '<p class="letter-display"> X </p>'
@@ -15,7 +16,6 @@ const updateGameBoard = function (element, tokenString) {
 
 const gameWon = function (side) {
   $('.heads-up p').text(`Player ${side} WINS.`)
-  $('main div')
 }
 
 const uiReset = function () {
@@ -23,10 +23,33 @@ const uiReset = function () {
   $('.grid-box').empty()
   $('.grid-box').addClass('clickable')
 }
+
+const headsUp = function (message) {
+  $('.heads-up p').text(`${message}`)
+}
+
+const signUpSuccess = function (data) {
+  console.log(data)
+}
+
+const signInSuccess = function (data) {
+  console.log(data)
+  store.user = data.user
+}
+
+const apiFailure = function (error) {
+  console.log(error)
+}
+
 module.exports = {
   userTokenO,
   userTokenX,
   updateGameBoard,
   gameWon,
-  uiReset
+  uiReset,
+  signInSuccess,
+  signUpSuccess,
+  apiFailure,
+  headsUp,
+  store
 }
