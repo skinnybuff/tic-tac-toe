@@ -9,17 +9,10 @@ $(() => {
 })
 
 $(() => {
-  $('.heads-up p').text('its player X\'s turn to move.')
   $('.clickable').on('click', event.onCheckBox)
   $('#new-game-btn').on('click', event.restGame)
-  $('#sign-in').on('submit', function (event) {
-    event.preventDefault()
-    console.log('submit')
-  })
-  $('#sign-up').on('submit', function (event) {
-    event.preventDefault()
-    console.log('submit')
-  })
+  $('#sign-in').on('submit', event.onSignIn)
+  $('#sign-up').on('submit', event.onSignUp)
 })
 
 // event handles the click and toggles the player turn
