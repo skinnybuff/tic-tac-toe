@@ -43,6 +43,19 @@ button {
   border: 0;
 }
 
+.button-wrapper {
+  position: relative;
+  top: 420px;
+
+  button {
+    color: $dark-main-color;
+
+    &:hover {
+      color: $grey;
+    }
+  }
+}
+
 .ctr-col {
   @include section-style;
   float: left;
@@ -107,9 +120,11 @@ header {
 
 .heads-up {
   background: $grey;
+  color: $main-color;
   margin: 0 auto;
   min-height: 40px;
   min-width: 426px;
+  padding: 4px 10px;
   width: 50%;
 
   p {
@@ -136,6 +151,22 @@ input {
   width: 200px;
 }
 
+label {
+  border-bottom: 1px solid $accent-color;
+  color: $grey;
+  line-height: 16px;
+  width: 200px;
+
+  a {
+    float: right;
+  }
+
+  span {
+    position: relative;
+    top: 6px;
+  }
+}
+
 .letter-display {
   color: $grey;
   font-family: $rubik;
@@ -158,6 +189,10 @@ main {
   min-width: 250px;
   padding: 20px;
   width: 20%;
+
+  a {
+    float: right;
+  }
 
   img {
     margin-bottom: 30px;

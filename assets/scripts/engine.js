@@ -1,6 +1,7 @@
 'use strict'
 
 const ui = require('./ui')
+const store = require('./store')
 
 const game = {
   // array to store the state of the game
@@ -27,11 +28,15 @@ const checkWin = function () {
       if (game.gameBoard[solution[0]] === 'X' && game.gameBoard[solution[1]] === 'X' && game.gameBoard[solution[2]] === 'X') {
         // console.log('X Wins!')
         gameWon('X')
+        store.player.wins++
+        ui.updateStats()
       }
 
       if (game.gameBoard[solution[0]] === 'O' && game.gameBoard[solution[1]] === 'O' && game.gameBoard[solution[2]] === 'O') {
         // console.log('O Wins!')
         gameWon('O')
+        store.player.losses++
+        ui.updateStats()
       }
     })
     // add a check for a tied game
@@ -43,6 +48,10 @@ const checkWin = function () {
 // get the location of the play from the gameboard data attribute
 const getLocation = function (element) {
   return $(element).attr('data-grid-position')
+}
+
+const logGameChange = function () {
+  // game.gameBoard to update
 }
 
 module.exports = {

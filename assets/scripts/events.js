@@ -3,6 +3,14 @@ const getFormFields = require(`../../lib/get-form-fields`)
 const engine = require('./engine')
 const api = require('./api')
 const ui = require('./ui')
+const store = require('./store')
+
+const onStart = function () {
+  $('#sign-out').hide()
+  $('.meta-data').hide()
+  $('#sign-up').hide()
+  ui.headsUp('Please Login or Sign up.')
+}
 
 const onCheckBox = function () {
   // console.log(engine.playerXturn)
@@ -34,7 +42,8 @@ const onCheckBox = function () {
 const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log(data)
+  // console.log(data)
+  console.log(store.player)
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.apiFailure)
@@ -49,8 +58,19 @@ const onSignUp = function (event) {
     .catch(ui.apiFailure)
 }
 
-const restGame = function () {
-  // console.log(engine.game.gameBoard)
+const onSignOut = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  console.log(data)
+  api.signOut(data)
+    .then(ui.signOutSuccess)
+    .catch(ui.apiFailure)
+}
+
+const resetGame = function () {
+  api.newGame()
+    .then(ui.resetSuccess)
+    .catch(ui.apiFailure)
   engine.game.gameBoard = [null, null, null, null, null, null, null, null, null]
   ui.uiReset()
   engine.game.playerXturn = true
@@ -58,9 +78,21 @@ const restGame = function () {
   // console.log(engine.gameBoard)
 }
 
+const onGetGames = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  console.log(data)
+  api.getGames(data)
+    .then(ui.getGamesSuccess)
+    .catch(ui.apiFailure)
+}
+
 module.exports = {
+  onStart,
   onCheckBox,
-  restGame,
+  resetGame,
   onSignIn,
-  onSignUp
+  onSignUp,
+  onSignOut,
+  onGetGames
 }
