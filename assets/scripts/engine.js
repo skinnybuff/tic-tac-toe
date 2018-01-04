@@ -28,15 +28,15 @@ const checkWin = function () {
       if (game.gameBoard[solution[0]] === 'X' && game.gameBoard[solution[1]] === 'X' && game.gameBoard[solution[2]] === 'X') {
         // console.log('X Wins!')
         gameWon('X')
-        store.player.wins++
-        ui.updateStats()
+        // store.player.wins = store.player.wins + 1
+        // ui.updateStats()
       }
 
       if (game.gameBoard[solution[0]] === 'O' && game.gameBoard[solution[1]] === 'O' && game.gameBoard[solution[2]] === 'O') {
         // console.log('O Wins!')
         gameWon('O')
-        store.player.losses++
-        ui.updateStats()
+        // store.player.losses = store.player.losses + 1
+        // ui.updateStats()
       }
     })
     // add a check for a tied game
@@ -51,12 +51,14 @@ const getLocation = function (element) {
 }
 
 const logGameChange = function () {
-  // game.gameBoard to update
+  store.updateGame.cell = game.gameBoard
+  console.log('CELL>>>' + store.updateGame.cell)
 }
 
 module.exports = {
   getLocation,
   solutions,
   checkWin,
-  game
+  game,
+  logGameChange
 }

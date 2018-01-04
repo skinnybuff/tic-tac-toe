@@ -56,10 +56,11 @@ button {
   }
 }
 
-.ctr-col {
+.center-col {
   @include section-style;
   float: left;
   margin: 1px 20px;
+  min-height: 500px;
   min-width: 472px;
   padding: 20px;
   width: 55%;
@@ -79,7 +80,7 @@ form {
 .game-meta {
   @include section-style;
   color: $grey;
-  float: right;
+  float: left;
   height: 500px;
   min-width: 250px;
   padding: 10px 20px;
@@ -137,6 +138,11 @@ header {
   }
 }
 
+img {
+  display: block;
+  margin: 0 auto;
+}
+
 .inactive {
   color: $dark-main-color;
 }
@@ -186,6 +192,7 @@ main {
 .mast-head {
   @include section-style;
   float: left;
+  min-height: 500px;
   min-width: 250px;
   padding: 20px;
   width: 20%;
@@ -197,6 +204,10 @@ main {
   img {
     margin-bottom: 30px;
   }
+}
+
+#new-game-btn {
+  width: 100%;
 }
 
 .style-hori {

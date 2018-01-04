@@ -18,6 +18,7 @@ $(() => {
   $('#sign-up-toggle').on('click', function () {
     $('#sign-up').show()
   })
+  $('#settings-btn').on('click', event.onChangePassword)
   event.onStart()
 // while gameover is false boxes not clickable
 })

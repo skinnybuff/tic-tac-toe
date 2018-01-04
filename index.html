@@ -27,7 +27,7 @@
             <button type="submit">Log In</button>
           </form>
           <form id="sign-out">
-            <label></label>
+            <label><a id="settings-btn">settings</a></label>
             <br>
             <button type="submit">Log Out</button>
           </form>
@@ -38,8 +38,14 @@
             <input type="password" name="credentials[password_confirmation]" placeholder="retype password"/>
             <button type="submit">Sign Up</button>
           </form>
+          <br>
+          <form id="change-password">
+            <input type="text" name="credentials[old]" placeholder="old password"/>
+            <input type="text" name="credentials[new]" placeholder="new password"/>
+            <button type="submit">Change</button>
+          </form>
         </section>
-        <div class="ctr-col">
+        <div class="center-col">
           <main>
             <div class = "grid-box clickable" data-grid-position="0">
             </div>
@@ -77,9 +83,6 @@
           <div class="button-wrapper">
             <button id="new-game-btn">
               New Game
-            </button>
-            <button id="save-game-btn">
-              Save Game
             </button>
         </div>
         </section>

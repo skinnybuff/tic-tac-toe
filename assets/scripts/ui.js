@@ -2,6 +2,7 @@
 
 const engine = require('./engine')
 const store = require('./store')
+const api = require('./api')
 
 // html partials to append the markers to the game board
 const userTokenX = '<p class="letter-display"> X </p>'
@@ -33,16 +34,6 @@ const signUpSuccess = function (data) {
   headsUp('You have sucessfuly signed up.')
 }
 
-const signInSuccess = function (data) {
-  console.log(data.user.email)
-  store.user = data.user
-  $('#sign-in').hide()
-  $('#sign-out').show()
-  $('label').html('<span>' + store.user.email + '</span> <a>settings</a>')
-  $('#sign-up').hide()
-  $('#sign-up-toggle').hide()
-}
-
 const signOutSuccess = function (data) {
   console.log(data)
   $('#sign-in').show()
@@ -63,9 +54,28 @@ const checkLogIn = function () {
 
 }
 
+const showPasswordChange = function () {
+  $('#change-password').show()
+}
+
+// loads the game object from the api and stores it in the update game obj
 const resetSuccess = function (data) {
-  console.log(data)
+  // console.log(data.game)
+  store.updateGame = data.game
   headsUp('Player X\'s turn to play')
+}
+
+const signInSuccess = function (data) {
+  console.log(data.user.email)
+  store.user = data.user
+  $('#sign-in').hide()
+  $('#sign-out').show()
+  $('label').prepend('<span>' + store.user.email + '</span>')
+  $('#sign-up').hide()
+  $('#sign-up-toggle').hide()
+  api.newGame()
+    .then(resetSuccess)
+    .catch(apiFailure)
 }
 
 module.exports = {
@@ -81,5 +91,6 @@ module.exports = {
   headsUp,
   checkLogIn,
   updateStats,
-  resetSuccess
+  resetSuccess,
+  showPasswordChange
 }
