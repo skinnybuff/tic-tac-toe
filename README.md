@@ -23,4 +23,4 @@ this repositories [github page](https://skinnybuff.github.io/tic-tac-toe/)
 7. As a gamer I want to a way to play another game when one is finished so that I don’t have to log out and in again
 
 ### Wireframes
-![Tic Tac Toe Wireframes](https://)
+![Tic Tac Toe Wireframes](https://github.com/skinnybuff/tic-tac-toe/tree/master/img/ticTacToe-wireframe.png)
