@@ -19,6 +19,8 @@ $(() => {
     $('#sign-up').show()
   })
   $('#settings-btn').on('click', event.onChangePassword)
+  $('#game-stats-btn').on('click', event.getGameStats)
+  $('#games-saved-btn').on('click', event.getSavedGames)
   event.onStart()
 // while gameover is false boxes not clickable
 })

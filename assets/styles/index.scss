@@ -44,11 +44,12 @@ button {
 }
 
 .button-wrapper {
-  position: relative;
-  top: 420px;
+  position: absolute;
+  top: 610px;
 
   button {
     color: $dark-main-color;
+    width: 200px;
 
     &:hover {
       color: $grey;
@@ -204,10 +205,6 @@ main {
   img {
     margin-bottom: 30px;
   }
-}
-
-#new-game-btn {
-  width: 100%;
 }
 
 .style-hori {

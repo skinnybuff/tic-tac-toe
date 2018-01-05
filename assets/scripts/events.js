@@ -7,7 +7,7 @@ const store = require('./store')
 
 const onStart = function () {
   $('#sign-out').hide()
-  $('.meta-data').hide()
+  $('#stats-data').hide()
   $('#sign-up').hide()
   $('#change-password').hide()
   ui.headsUp('Please Login or Sign up.')
@@ -98,6 +98,14 @@ const onGetGames = function (event) {
     .catch(ui.apiFailure)
 }
 
+const getGameStats = function () {
+  return 'game stats'
+}
+
+const getSavedGames = function () {
+  return 'saved game list'
+}
+
 module.exports = {
   onStart,
   onCheckBox,
@@ -106,5 +114,7 @@ module.exports = {
   onSignUp,
   onSignOut,
   onGetGames,
-  onChangePassword
+  onChangePassword,
+  getGameStats,
+  getSavedGames
 }

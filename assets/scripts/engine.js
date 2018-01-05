@@ -2,6 +2,7 @@
 
 const ui = require('./ui')
 const store = require('./store')
+const api = require('./api')
 
 const game = {
   // array to store the state of the game
@@ -50,9 +51,25 @@ const getLocation = function (element) {
   return $(element).attr('data-grid-position')
 }
 
-const logGameChange = function () {
+const sendCellObj = function (index, value) {
+  const cell = {
+    'game': {
+      'cell': {
+        'index': index,
+        'value': value
+      },
+      'over': false
+    }
+  }
+  return cell
+}
+
+const logGameChange = function (data) {
   store.updateGame.cell = game.gameBoard
-  console.log('CELL>>>' + store.updateGame.cell)
+  // console.log('CELL>>>' + store.updateGame.cell)
+  api.updateGame(data)
+    .then(ui.updateGameSuccess)
+    .catch(ui.apiFailure)
 }
 
 module.exports = {
@@ -60,5 +77,6 @@ module.exports = {
   solutions,
   checkWin,
   game,
-  logGameChange
+  logGameChange,
+  sendCellObj
 }

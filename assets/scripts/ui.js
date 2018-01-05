@@ -63,6 +63,8 @@ const resetSuccess = function (data) {
   // console.log(data.game)
   store.updateGame = data.game
   headsUp('Player X\'s turn to play')
+  $('.meta-data').html('<ul><li>Game Id: ' + store.updateGame.id + '</li><li>Player Id: ' + store.updateGame.player_x.id + '</li></ul>')
+  console.log(store.updateGame)
 }
 
 const signInSuccess = function (data) {
