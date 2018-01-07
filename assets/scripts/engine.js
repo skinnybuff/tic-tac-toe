@@ -19,6 +19,7 @@ const solutions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5,
 const gameWon = function (side) {
   ui.gameWon(side)
   game.gameOver = true
+  return game.gameOver
 }
 
 const checkWin = function () {
@@ -46,28 +47,28 @@ const checkWin = function () {
     ui.headsUp('Please start a new game.')
   }
 }
+
+const freezeGame = function () {
+
+}
 // get the location of the play from the gameboard data attribute
 const getLocation = function (element) {
   return $(element).attr('data-grid-position')
 }
 
-const sendCellObj = function (index, value) {
-  const cell = {
+const logGameChange = function (location, token, done) {
+  store.updateGame.cell = game.gameBoard
+  const updateObj = {
     'game': {
       'cell': {
-        'index': index,
-        'value': value
+        'index': location,
+        'value': token
       },
-      'over': false
+      'over': done
     }
   }
-  return cell
-}
-
-const logGameChange = function (data) {
-  store.updateGame.cell = game.gameBoard
-  // console.log('CELL>>>' + store.updateGame.cell)
-  api.updateGame(data)
+  console.log(updateObj)
+  api.updateGame(updateObj)
     .then(ui.updateGameSuccess)
     .catch(ui.apiFailure)
 }
@@ -78,5 +79,5 @@ module.exports = {
   checkWin,
   game,
   logGameChange,
-  sendCellObj
+  freezeGame
 }

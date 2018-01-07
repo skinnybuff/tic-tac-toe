@@ -35,13 +35,15 @@ const signUpSuccess = function (data) {
 }
 
 const signOutSuccess = function (data) {
-  console.log(data)
+  // console.log(data)
   $('#sign-in').show()
   $('#sign-out').hide()
 }
 
 const apiFailure = function (error) {
-  console.log(error)
+  // console.log(error)
+  headsUp('There was an error please try again')
+  return error
 }
 
 const updateStats = function () {
@@ -58,6 +60,16 @@ const showPasswordChange = function () {
   $('#change-password').show()
 }
 
+const changePasswordSuccess = function (data) {
+  // console.log(data)
+  $('#change-password').hide()
+  headsUp('Your Password has been updated')
+}
+
+const savedSuccess = function (data) {
+  console.log(data)
+}
+
 // loads the game object from the api and stores it in the update game obj
 const resetSuccess = function (data) {
   // console.log(data.game)
@@ -67,8 +79,14 @@ const resetSuccess = function (data) {
   console.log(store.updateGame)
 }
 
+const updateGameSuccess = function (data) {
+  // console.log(data.game)
+  store.updateGame = data.game
+  console.log(store.updateGame)
+}
+
 const signInSuccess = function (data) {
-  console.log(data.user.email)
+  // console.log(data.user.email)
   store.user = data.user
   $('#sign-in').hide()
   $('#sign-out').show()
@@ -94,5 +112,8 @@ module.exports = {
   checkLogIn,
   updateStats,
   resetSuccess,
-  showPasswordChange
+  showPasswordChange,
+  changePasswordSuccess,
+  savedSuccess,
+  updateGameSuccess
 }

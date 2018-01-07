@@ -36,7 +36,7 @@ const onCheckBox = function () {
         engine.game.playerXturn = !engine.game.playerXturn
       }
     }
-    engine.logGameChange()
+    engine.logGameChange(engine.getLocation(this), engine.game.gameBoard[engine.getLocation(this)], engine.checkWin())
     engine.checkWin()
   }
   // console.log(engine.game.gameBoard)
@@ -48,7 +48,7 @@ const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
   // console.log(data)
-  console.log(store.player)
+  // console.log(store.player)
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.apiFailure)
@@ -57,7 +57,7 @@ const onSignIn = function (event) {
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log(data)
+  // console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.apiFailure)
@@ -66,7 +66,7 @@ const onSignUp = function (event) {
 const onSignOut = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log(data)
+  // console.log(data)
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.apiFailure)
@@ -92,17 +92,22 @@ const resetGame = function () {
 const onGetGames = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log(data)
+  // console.log(data)
   api.getGames(data)
     .then(ui.getGamesSuccess)
     .catch(ui.apiFailure)
 }
 
 const getGameStats = function () {
+  console.log('get stats')
   return 'game stats'
 }
 
 const getSavedGames = function () {
+  console.log('saved games')
+  api.savedGames()
+    .then(ui.savedSuccess)
+    .catch(ui.apiFailure)
   return 'saved game list'
 }
 
