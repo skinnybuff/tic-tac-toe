@@ -1,2 +1,223 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Rubik+Mono+One');
+
+$grey: #ddd;
+$dark-grey: #555;
+$main-color: #2d649e;
+$dark-main-color: #1a2d54;
+$accent-color: #67ea85;
+$transparent: rgba(0, 0, 0, 0);
+$rubik: 'Rubik Mono One', sans-serif;
+$roboto: 'Roboto Condensed', sans-serif;
+
+@mixin section-style {
+  border: 2px solid $dark-main-color;
+  box-shadow: 4px 4px $dark-main-color;
+}
+
+a {
+  color: $accent-color;
+  margin: 0 auto;
+  padding: 8px;
+  text-align: center;
+  text-decoration: underline overline;
+
+  &:hover {
+    color: $grey;
+    font-weight: 800;
+    text-decoration: underline overline;
+  }
+}
+
+body {
+  background: linear-gradient($main-color, $dark-main-color);
+  font-family: $roboto;
+  font-size: 18px;
+  height: 1000px;
+  margin: 40px 5px;
+}
+
+button {
+  background: $accent-color;
+  border: 0;
+}
+
+.button-wrapper {
+  position: absolute;
+  top: 610px;
+
+  button {
+    color: $dark-main-color;
+    width: 200px;
+
+    &:hover {
+      color: $grey;
+    }
+  }
+}
+
+.center-col {
+  @include section-style;
+  float: left;
+  margin: 1px 20px;
+  min-height: 500px;
+  min-width: 472px;
+  padding: 20px;
+  width: 55%;
+}
+
+focus {
+  color: $dark-grey;
+}
+
+form {
+  button {
+    margin-left: 4px;
+    margin-top: 4px;
+  }
+}
+
+.game-meta {
+  @include section-style;
+  color: $grey;
+  float: left;
+  height: 500px;
+  min-width: 250px;
+  padding: 10px 20px;
+
+  ul {
+    font-family: $roboto;
+    list-style: none;
+    margin-top: 30px;
+  }
+}
+
+.grid-box {
+  box-sizing: border-box;
+  float: left;
+  height: 106px;
+  user-select: none;
+  width: 106px;
+
+  &:hover {
+    background-color: $accent-color;
+  }
+}
+
+.grid-style {
+  border: 3px $dark-main-color dotted;
+}
+
+header {
+  color: $accent-color;
+  font-family: $rubik;
+  text-align: center;
+  text-shadow: 3px  3px $grey;
+
+  h1 {
+    font-size: 8rem;
+  }
+}
+
+.heads-up {
+  background: $grey;
+  color: $main-color;
+  margin: 0 auto;
+  min-height: 40px;
+  min-width: 426px;
+  padding: 4px 10px;
+  width: 50%;
+
+  p {
+    float: left;
+  }
+
+  button {
+    float: right;
+    height: 40px;
+  }
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+.inactive {
+  color: $dark-main-color;
+}
+
+input {
+  background: $transparent;
+  border: 0;
+  border-bottom: 1px solid $accent-color;
+  color: $grey;
+  margin: 4px;
+  padding: 4px;
+  width: 200px;
+}
+
+label {
+  border-bottom: 1px solid $accent-color;
+  color: $grey;
+  line-height: 16px;
+  width: 200px;
+
+  a {
+    float: right;
+  }
+
+  span {
+    position: relative;
+    top: 6px;
+  }
+}
+
+.letter-display {
+  color: $grey;
+  font-family: $rubik;
+  font-size: 4.5em;
+  font-weight: 800;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+main {
+  height: 320px;
+  margin: 30px auto;
+  width: 320px;
+}
+
+.mast-head {
+  @include section-style;
+  float: left;
+  min-height: 500px;
+  min-width: 250px;
+  padding: 20px;
+  width: 20%;
+
+  a {
+    float: right;
+  }
+
+  img {
+    margin-bottom: 30px;
+  }
+}
+
+.style-hori {
+  border-left: 0;
+  border-right: 0;
+}
+
+.style-vert {
+  border-bottom: 0;
+  border-top: 0;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+}
