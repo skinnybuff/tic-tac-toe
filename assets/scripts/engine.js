@@ -41,6 +41,9 @@ const checkWin = function () {
         // store.player.losses = store.player.losses + 1
         // ui.updateStats()
       }
+      if (game.gameBoard.every((item) => { return item !== null })) {
+        ui.headsUp('Its a tie!')
+      }
     })
     // add a check for a tied game
   } else {
