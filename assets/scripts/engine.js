@@ -19,7 +19,6 @@ const solutions = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5,
 const gameWon = function (side) {
   ui.gameWon(side)
   game.gameOver = true
-  return game.gameOver
 }
 
 const checkWin = function () {
@@ -30,6 +29,7 @@ const checkWin = function () {
       if (game.gameBoard[solution[0]] === 'X' && game.gameBoard[solution[1]] === 'X' && game.gameBoard[solution[2]] === 'X') {
         // console.log('X Wins!')
         gameWon('X')
+        $('.grid-box').removeClass('clickable')
         // store.player.wins = store.player.wins + 1
         // ui.updateStats()
       }
@@ -37,6 +37,7 @@ const checkWin = function () {
       if (game.gameBoard[solution[0]] === 'O' && game.gameBoard[solution[1]] === 'O' && game.gameBoard[solution[2]] === 'O') {
         // console.log('O Wins!')
         gameWon('O')
+        $('.grid-box').removeClass('clickable')
         // store.player.losses = store.player.losses + 1
         // ui.updateStats()
       }
@@ -47,27 +48,15 @@ const checkWin = function () {
     ui.headsUp('Please start a new game.')
   }
 }
-
-const freezeGame = function () {
-
-}
 // get the location of the play from the gameboard data attribute
 const getLocation = function (element) {
   return $(element).attr('data-grid-position')
 }
 
-const logGameChange = function (location, token, done) {
-  store.updateGame.cell = game.gameBoard
-  const updateObj = {
-    'game': {
-      'cell': {
-        'index': location,
-        'value': token
-      },
-      'over': done
-    }
-  }
-  console.log(updateObj)
+// TODO: make sure im sending the correct object the API
+const logGameChange = function () {
+  // console.log(store.updateCell)
+  const updateObj = store.updateCell
   api.updateGame(updateObj)
     .then(ui.updateGameSuccess)
     .catch(ui.apiFailure)
@@ -78,6 +67,5 @@ module.exports = {
   solutions,
   checkWin,
   game,
-  logGameChange,
-  freezeGame
+  logGameChange
 }

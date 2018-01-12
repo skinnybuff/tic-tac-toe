@@ -10,8 +10,24 @@ const onStart = function () {
   $('#stats-data').hide()
   $('#sign-up').hide()
   $('#change-password').hide()
+  $('#saved-games-display').hide()
   ui.headsUp('Please Login or Sign up.')
-  $('.grid-box').toggleClass('clickable')
+}
+
+const sendCellObj = function (element) {
+  let cellVal = ''
+  engine.playerXturn ? cellVal = 'x' : cellVal = 'o'
+  const cell = {
+    'game': {
+      'cell': {
+        'index': engine.getLocation(element),
+        'value': cellVal
+      },
+      'over': engine.game.gameOver
+    }
+  }
+  // console.log(cell)
+  store.updateCell = cell
 }
 
 const onCheckBox = function () {
@@ -23,7 +39,7 @@ const onCheckBox = function () {
       $('.heads-up p').text('please select and empty box.')
     } else {
       if (engine.game.playerXturn) {
-        // for player X update gamedisplay, gamboard, ui & change player turn
+        // for player X update gamedisplay, gamboard, ui & change player turnconsole.l
         $('.heads-up p').text('its player O\'s turn to move.')
         $(this).html(ui.userTokenX)
         engine.game.gameBoard[engine.getLocation(this)] = 'X'
@@ -36,12 +52,10 @@ const onCheckBox = function () {
         engine.game.playerXturn = !engine.game.playerXturn
       }
     }
-    engine.logGameChange(engine.getLocation(this), engine.game.gameBoard[engine.getLocation(this)], engine.checkWin())
     engine.checkWin()
+    sendCellObj(this)
+    engine.logGameChange(engine.getLocation(this), engine.game.gameBoard[engine.getLocation(this)], engine.game.gameOver)
   }
-  // console.log(engine.game.gameBoard)
-  // console.log(engine.game.getLocation(this))
-  // console.log(engine.game.playerXturn)
 }
 
 const onSignIn = function (event) {
@@ -73,11 +87,15 @@ const onSignOut = function (event) {
 }
 
 const onChangePassword = function () {
+  event.preventDefault()
   ui.showPasswordChange()
 }
 
 const resetGame = function () {
   if (store.user) {
+    api.getGames()
+      .then(ui.getGamesSuccess)
+      .catch(ui.apiFailure)
     api.newGame()
       .then(ui.resetSuccess)
       .catch(ui.apiFailure)
@@ -99,12 +117,11 @@ const onGetGames = function (event) {
 }
 
 const getGameStats = function () {
-  console.log('get stats')
-  return 'game stats'
+  // console.log('get stats')const
 }
 
 const getSavedGames = function () {
-  console.log('saved games')
+  // console.log('saved games')
   api.savedGames()
     .then(ui.savedSuccess)
     .catch(ui.apiFailure)
@@ -121,5 +138,6 @@ module.exports = {
   onGetGames,
   onChangePassword,
   getGameStats,
-  getSavedGames
+  getSavedGames,
+  sendCellObj
 }

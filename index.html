@@ -49,19 +49,19 @@
           <main>
             <div class = "grid-box clickable" data-grid-position="0">
             </div>
-            <div class = "grid-box grid-style style-vert clickable" data-grid-position="1">
+            <div class = "grid-box clickable grid-style style-vert" data-grid-position="1">
             </div>
             <div class = "grid-box clickable" data-grid-position="2">
             </div>
-            <div class = "grid-box grid-style style-hori clickable" data-grid-position="3">
+            <div class = "grid-box clickable grid-style style-hori" data-grid-position="3">
             </div>
-            <div class = "grid-box grid-style clickable" data-grid-position="4">
+            <div class = "grid-box clickable grid-style" data-grid-position="4">
             </div>
-            <div class = "grid-box grid-style style-hori clickable" data-grid-position="5">
+            <div class = "grid-box clickable grid-style style-hori" data-grid-position="5">
             </div>
             <div class = "grid-box clickable" data-grid-position="6">
             </div>
-            <div class = "grid-box grid-style style-vert clickable" data-grid-position="7">
+            <div class = "grid-box clickable grid-style style-vert" data-grid-position="7">
             </div>
             <div class = "grid-box clickable" data-grid-position="8">
             </div>
@@ -74,10 +74,20 @@
         <section class="game-meta">
           <a id="game-stats-btn">game stats</a><a class="inactive" id="games-saved-btn">saved games</a>
           <div class="meta-data">
+            <!-- <ul id="player-meta">
+              <li data-playerId>Player Id: ' + store.updateGame.player_x.id + '</li>
+              <li data-gamesTotal>Game Played: ' + store.player.savedGames.length + '</li>
+              <li data-playerId>Game Id: ' + store.updateGame.id + '</li>
+            </ul> -->
             <ul id="stats-data">
               <li>Wins: <span id="win-display">0</span></li>
               <li>Losses: <span id="loss-display">0</span></li>
               <li>Ties: <span id="tie-display">0</span></li>
+            </ul>
+          </div>
+          <div id="saved-games-display">
+            <ul>
+
             </ul>
           </div>
           <div class="button-wrapper">

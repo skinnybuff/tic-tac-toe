@@ -17,6 +17,7 @@ const updateGameBoard = function (element, tokenString) {
 
 const gameWon = function (side) {
   $('.heads-up p').text(`Player ${side} WINS.`)
+  $('.grid-box').removeClass('clickable')
 }
 
 const uiReset = function () {
@@ -31,7 +32,10 @@ const headsUp = function (message) {
 
 const signUpSuccess = function (data) {
   // console.log(data)
-  headsUp('You have sucessfuly signed up.')
+  headsUp('You have sucessfuly signed up. Please Log In.')
+  $('#sign-up').each(function () {
+    this.reset()
+  })
 }
 
 const signOutSuccess = function (data) {
@@ -67,27 +71,36 @@ const changePasswordSuccess = function (data) {
 }
 
 const savedSuccess = function (data) {
-  console.log(data)
+  $('#getSavedGames').show()
+}
+
+const getGamesSuccess = function (data) {
+  // console.log('get games plural success')
+  store.allGames = data.games
 }
 
 // loads the game object from the api and stores it in the update game obj
 const resetSuccess = function (data) {
   // console.log(data.game)
   store.updateGame = data.game
+  // console.log(store.updateGame)
   headsUp('Player X\'s turn to play')
-  $('.meta-data').html('<ul><li>Game Id: ' + store.updateGame.id + '</li><li>Player Id: ' + store.updateGame.player_x.id + '</li></ul>')
-  console.log(store.updateGame)
+  $('.meta-data').html('<ul><li>Player Id: ' + store.updateGame.player_x.id + '</li><li>Game Played: </li><li>Game Id: ' + store.updateGame.id + '</li></ul>')
+  // console.log(store.updateGame)
 }
 
 const updateGameSuccess = function (data) {
   // console.log(data.game)
   store.updateGame = data.game
-  console.log(store.updateGame)
+  // console.log(store.updateGame)
 }
 
 const signInSuccess = function (data) {
   // console.log(data.user.email)
   store.user = data.user
+  $('#sign-in').each(function () {
+    this.reset()
+  })
   $('#sign-in').hide()
   $('#sign-out').show()
   $('label').prepend('<span>' + store.user.email + '</span>')
@@ -95,6 +108,9 @@ const signInSuccess = function (data) {
   $('#sign-up-toggle').hide()
   api.newGame()
     .then(resetSuccess)
+    .catch(apiFailure)
+  api.getGames()
+    .then(getGamesSuccess)
     .catch(apiFailure)
 }
 
