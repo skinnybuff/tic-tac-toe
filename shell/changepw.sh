@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# sh assets/auth/sign-out.sh
+# sh shell/sign-out.sh
 
 curl "http://tic-tac-toe.wdibos.com/change-password/${ID}" \
   --include \
