@@ -17,7 +17,7 @@ const updateGameBoard = function (element, tokenString) {
 
 const gameWon = function (side) {
   $('.heads-up p').text(`Player ${side} WINS.`)
-  $('.grid-box').removeClass('clickable')
+  $('.grid-box').removeClass('clickable').off('click')
 }
 
 const uiReset = function () {
