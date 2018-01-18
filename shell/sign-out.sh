@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# sh assets/auth/sign-out.sh
+# sh shell/sign-out.sh
 
-curl "http://tic-tac-toe.wdibos.com/sign-out/ + ${ID}" \
+curl "http://tic-tac-toe.wdibos.com/sign-out/${ID}" \
   --include \
-  --request DELETE \
+  --request DELETE\
   --header "Content-Type: application/json" \
-  --header "Authorization: Token token= + '${TOKEN}'"
+  --header "Authorization: Token token=${TOKEN}"
 
 echo
