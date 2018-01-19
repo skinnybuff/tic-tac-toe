@@ -86,7 +86,7 @@ const onSignOut = function (event) {
     .catch(ui.apiFailure)
 }
 
-const onChangePassword = function () {
+const onChangePassword = function (event) {
   event.preventDefault()
   ui.showPasswordChange()
 }
@@ -117,15 +117,22 @@ const onGetGames = function (event) {
 }
 
 const getGameStats = function () {
-  // console.log('get stats')const
+  // console.log('get stats')
+  $('#games-saved-btn').toggleClass('inactive')
+  $('#game-stats-btn').toggleClass('inactive')
+  $('#meta-data').show()
+  $('.saved-games-display').hide()
 }
-
+// TODO: display the games list
 const getSavedGames = function () {
   // console.log('saved games')
-  api.savedGames()
-    .then(ui.savedSuccess)
-    .catch(ui.apiFailure)
-  return 'saved game list'
+  $('#games-saved-btn').toggleClass('inactive')
+  $('#game-stats-btn').toggleClass('inactive')
+  $('#meta-data').hide()
+  $('.saved-games-display').show()
+  // api.savedGames()
+  //   .then(ui.savedSuccess)
+  //   .catch(ui.apiFailure)
 }
 
 module.exports = {

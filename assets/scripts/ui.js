@@ -3,6 +3,7 @@
 const engine = require('./engine')
 const store = require('./store')
 const api = require('./api')
+const event = require('./events')
 
 // html partials to append the markers to the game board
 const userTokenX = '<p class="letter-display"> X </p>'
@@ -17,13 +18,13 @@ const updateGameBoard = function (element, tokenString) {
 
 const gameWon = function (side) {
   $('.heads-up p').text(`Player ${side} WINS.`)
-  $('.grid-box').removeClass('clickable').off('click')
 }
 
 const uiReset = function () {
   $('.heads-up p').text('')
   $('.grid-box').empty()
   $('.grid-box').addClass('clickable')
+  $('.clickable').on('click', event.onCheckBox)
 }
 
 const headsUp = function (message) {
@@ -42,6 +43,9 @@ const signOutSuccess = function (data) {
   // console.log(data)
   $('#sign-in').show()
   $('#sign-out').hide()
+  $('#meta-data').hide()
+  // TODO: Remove from label on log out
+  $('label :first-child').remove()
 }
 
 const apiFailure = function (error) {
@@ -75,8 +79,8 @@ const savedSuccess = function (data) {
 }
 
 const getGamesSuccess = function (data) {
-  // console.log('get games plural success')
   store.allGames = data.games
+  console.log(store.allGames)
 }
 
 // loads the game object from the api and stores it in the update game obj
@@ -85,7 +89,7 @@ const resetSuccess = function (data) {
   store.updateGame = data.game
   // console.log(store.updateGame)
   headsUp('Player X\'s turn to play')
-  $('.meta-data').html('<ul><li>Player Id: ' + store.updateGame.player_x.id + '</li><li>Game Played: </li><li>Game Id: ' + store.updateGame.id + '</li></ul>')
+  $('#meta-data').html('<ul><li>Player Id: ' + store.updateGame.player_x.id + '</li><li>Game Played: ' + store.allGames.length + '</li><li>Game Id: ' + store.updateGame.id + '</li></ul>')
   // console.log(store.updateGame)
 }
 
@@ -106,12 +110,18 @@ const signInSuccess = function (data) {
   $('label').prepend('<span>' + store.user.email + '</span>')
   $('#sign-up').hide()
   $('#sign-up-toggle').hide()
-  api.newGame()
-    .then(resetSuccess)
-    .catch(apiFailure)
-  api.getGames()
-    .then(getGamesSuccess)
-    .catch(apiFailure)
+  // $('#meta-data').html('<ul><li>Player Id: ' + store.updateGame.player_x.id + '</li><li>Game Played: ' + store.allGames.length + '</li><li>Game Id: ' + store.updateGame.id + '</li></ul>')
+  $('#meta-data').show()
+  $('#player-ID-display').text(store.updateGame.player_x.id)
+  $('#total-games-display').text(store.allGames.length)
+  $('#current-game-ID').text(store.updateGame.id)
+  //  TODO : inspect call after log in success
+  // api.newGame()
+  //   .then(resetSuccess)
+  //   .catch(apiFailure)
+  // api.getGames()
+  //   .then(getGamesSuccess)
+  //   .catch(apiFailure)
 }
 
 module.exports = {

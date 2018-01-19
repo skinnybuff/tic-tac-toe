@@ -32,17 +32,16 @@ const checkWin = function () {
         $('.grid-box').removeClass('clickable')
         // store.player.wins = store.player.wins + 1
         // ui.updateStats()
-      }
-
-      if (game.gameBoard[solution[0]] === 'O' && game.gameBoard[solution[1]] === 'O' && game.gameBoard[solution[2]] === 'O') {
+      } else if (game.gameBoard[solution[0]] === 'O' && game.gameBoard[solution[1]] === 'O' && game.gameBoard[solution[2]] === 'O') {
         // console.log('O Wins!')
         gameWon('O')
         $('.grid-box').removeClass('clickable')
         // store.player.losses = store.player.losses + 1
         // ui.updateStats()
-      }
-      if (game.gameBoard.every((item) => { return item !== null })) {
-        ui.headsUp('Its a tie!')
+      } else {
+        if (game.gameBoard.every((item) => { return item !== null })) {
+          ui.headsUp('Its a tie!')
+        }
       }
     })
     // add a check for a tied game

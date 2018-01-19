@@ -17,6 +17,7 @@ $(() => {
   $('#sign-up-toggle').on('click', function () {
     $('#sign-up').show()
   })
+  $('#meta-data').hide()
   $('#settings-btn').on('click', event.onChangePassword)
   $('#game-stats-btn').on('click', event.getGameStats)
   $('#games-saved-btn').on('click', event.getSavedGames)
