@@ -7,10 +7,12 @@ const store = require('./store')
 
 const onStart = function () {
   $('#sign-out').hide()
+  // TODO: get calc game states data to display
   $('#stats-data').hide()
   $('#sign-up').hide()
   $('#change-password').hide()
-  $('#saved-games-display').hide()
+  // TODO: hide games list on start after debugged
+  // $('#saved-games-display').hide()
   ui.headsUp('Please Login or Sign up.')
 }
 
@@ -120,16 +122,17 @@ const getGameStats = function () {
   // console.log('get stats')
   $('#games-saved-btn').toggleClass('inactive')
   $('#game-stats-btn').toggleClass('inactive')
+  $('#saved-games-display').hide()
   $('#meta-data').show()
-  $('.saved-games-display').hide()
 }
+
 // TODO: display the games list
 const getSavedGames = function () {
   // console.log('saved games')
   $('#games-saved-btn').toggleClass('inactive')
   $('#game-stats-btn').toggleClass('inactive')
   $('#meta-data').hide()
-  $('.saved-games-display').show()
+  $('#saved-games-display').show()
   // api.savedGames()
   //   .then(ui.savedSuccess)
   //   .catch(ui.apiFailure)
