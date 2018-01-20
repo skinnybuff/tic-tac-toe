@@ -2,7 +2,6 @@
 
 const engine = require('./engine')
 const store = require('./store')
-const api = require('./api')
 const event = require('./events')
 
 // html partials to append the markers to the game board
@@ -44,7 +43,6 @@ const signOutSuccess = function (data) {
   $('#sign-in').show()
   $('#sign-out').hide()
   $('#meta-data').hide()
-  // TODO: Remove from label on log out
   $('label :first-child').remove()
 }
 
