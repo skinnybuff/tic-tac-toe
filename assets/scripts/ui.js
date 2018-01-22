@@ -24,6 +24,7 @@ const uiReset = function () {
   $('.grid-box').empty()
   $('.grid-box').addClass('clickable')
   $('.clickable').on('click', event.onCheckBox)
+  $('#total-games-display').text(store.)
 }
 
 const headsUp = function (message) {
@@ -90,6 +91,7 @@ const resetSuccess = function (data) {
   headsUp('Player X\'s turn to play')
   $('#meta-data').html('<ul><li>Player Id: ' + store.updateGame.player_x.id + '</li><li>Game Played: ' + store.allGames.length + '</li><li>Game Id: ' + store.updateGame.id + '</li></ul>')
   // console.log(store.updateGame)
+  $('#current-game-ID').text(store.updateGame.id )
 }
 
 const updateGameSuccess = function (data) {
