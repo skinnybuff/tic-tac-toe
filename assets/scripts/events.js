@@ -34,7 +34,7 @@ const sendCellObj = function (element) {
 
 const onCheckBox = function () {
   // only run if player is logged in
-  if (store.user !== undefined) {
+  if (store.user !== undefined && !engine.game.gameOver) {
   // console.log(engine.playerXturn)
   // check if the position is occupiued
     if (engine.game.gameBoard[engine.getLocation(this)] !== null) {
@@ -67,6 +67,7 @@ const onSignIn = function (event) {
   // console.log(store.player)
   api.signIn(data)
     .then(ui.signInSuccess)
+    .then(ui.getGamesSuccess)
     .catch(ui.apiFailure)
 }
 
@@ -120,23 +121,33 @@ const onGetGames = function (event) {
 
 const getGameStats = function () {
   // console.log('get stats')
-  $('#games-saved-btn').toggleClass('inactive')
-  $('#game-stats-btn').toggleClass('inactive')
-  $('#saved-games-display').hide()
-  $('#meta-data').show()
+  if (store.user) {
+    $('#games-saved-btn').toggleClass('inactive')
+    $('#game-stats-btn').toggleClass('inactive')
+    $('#saved-games-display').hide()
+    $('#meta-data').show()
+  }
 }
 
 // TODO: display the games list
 const getSavedGames = function () {
   // console.log('saved games')
-  $('#games-saved-btn').toggleClass('inactive')
-  $('#game-stats-btn').toggleClass('inactive')
-  $('#meta-data').hide()
-  $('#saved-games-display').show()
+  if (store.user) {
+    $('#games-saved-btn').toggleClass('inactive')
+    $('#game-stats-btn').toggleClass('inactive')
+    $('#meta-data').hide()
+    $('#saved-games-display').show()
+  }
   // api.savedGames()
   //   .then(ui.savedSuccess)
   //   .catch(ui.apiFailure)
 }
+
+// create x-template
+// create fillin html tag
+// loop over the data foreach
+// attach data point to fillin
+// append to template
 
 module.exports = {
   onStart,

@@ -43,6 +43,7 @@ const signOutSuccess = function (data) {
   $('#sign-in').show()
   $('#sign-out').hide()
   $('#meta-data').hide()
+  $('#saved-games-display').hide()
   $('label :first-child').remove()
 }
 
@@ -110,7 +111,7 @@ const signInSuccess = function (data) {
   $('#sign-up-toggle').hide()
   // $('#meta-data').html('<ul><li>Player Id: ' + store.updateGame.player_x.id + '</li><li>Game Played: ' + store.allGames.length + '</li><li>Game Id: ' + store.updateGame.id + '</li></ul>')
   $('#meta-data').show()
-  $('#player-ID-display').text(store.updateGame.player_x.id)
+  $('#player-ID-display').text(data.user.id)
   $('#total-games-display').text(store.allGames.length)
   $('#current-game-ID').text(store.updateGame.id)
   //  TODO : inspect call after log in success
@@ -139,5 +140,6 @@ module.exports = {
   showPasswordChange,
   changePasswordSuccess,
   savedSuccess,
-  updateGameSuccess
+  updateGameSuccess,
+  getGamesSuccess
 }

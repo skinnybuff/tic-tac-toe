@@ -23,5 +23,8 @@ $(() => {
   $('#game-stats-btn').on('click', event.getGameStats)
   $('#games-saved-btn').on('click', event.getSavedGames)
   event.onStart()
-// while gameover is false boxes not clickable
+
+  if ('content' in document.createElement('template')) {
+    // run saved games template here
+  }
 })
