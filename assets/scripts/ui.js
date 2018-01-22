@@ -24,7 +24,7 @@ const uiReset = function () {
   $('.grid-box').empty()
   $('.grid-box').addClass('clickable')
   $('.clickable').on('click', event.onCheckBox)
-  $('#total-games-display').text(store.)
+  $('#total-games-display').text(store.games)
 }
 
 const headsUp = function (message) {
@@ -80,7 +80,7 @@ const savedSuccess = function (data) {
 
 const getGamesSuccess = function (data) {
   store.allGames = data.games
-  console.log(store.allGames)
+  // console.log(store.allGames)
 }
 
 // loads the game object from the api and stores it in the update game obj
@@ -89,9 +89,16 @@ const resetSuccess = function (data) {
   store.updateGame = data.game
   // console.log(store.updateGame)
   headsUp('Player X\'s turn to play')
-  $('#meta-data').html('<ul><li>Player Id: ' + store.updateGame.player_x.id + '</li><li>Game Played: ' + store.allGames.length + '</li><li>Game Id: ' + store.updateGame.id + '</li></ul>')
+  // $('#meta-data').html('<ul><li>Player Id: ' + store.updateGame.player_x.id + '</li><li>Game Played: ' + store.allGames.length + '</li><li>Game Id: ' + store.updateGame.id + '</li></ul>')
   // console.log(store.updateGame)
-  $('#current-game-ID').text(store.updateGame.id )
+  const allGamesArray = store.allGames
+  $('#current-game-ID').text(store.updateGame.id)
+  $('#total-games-display').text(allGamesArray.length)
+
+  for (let i = 0; i < allGamesArray.length; i++) {
+    const indexedGame = allGamesArray[i]
+    // console.log(allGamesArray[i].id)
+  }
 }
 
 const updateGameSuccess = function (data) {

@@ -67,7 +67,7 @@ const onSignIn = function (event) {
   // console.log(store.player)
   api.signIn(data)
     .then(ui.signInSuccess)
-    .then(ui.getGamesSuccess)
+    // .then(api.gestGames)
     .catch(ui.apiFailure)
 }
 
