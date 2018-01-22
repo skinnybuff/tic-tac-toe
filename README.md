@@ -1,3 +1,4 @@
+
 # Documentation
 
 This project was started as an assignment for Genreal Assemblys Web development boot camp.
@@ -24,9 +25,10 @@ I approached the project by building a piece at a time and linking them together
 7. As a gamer I want to a way to play another game when one is finished so that I don’t have to log out and in again
 
 ### Wireframes
-![Tic Tac Toe Wireframes](./img/ticTacToe-wireframe.png)
+![Tic Tac Toe Wireframes](https://github.com/skinnybuff/tic-tac-toe/tree/master/img/ticTacToe-wireframe.pdf)
 
 ### TODO
 - automatically sign in when you sign up
-- clear form data after login in
-- persist win and loss stats for users
+- template the saved games list
+- add mobile breakpoints
+
