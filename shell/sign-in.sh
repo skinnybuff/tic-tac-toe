@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# sh assets/auth/sign-in.sh
+# sh shell/sign-in.sh
 
 curl "http://tic-tac-toe.wdibos.com/sign-in" \
   --include \

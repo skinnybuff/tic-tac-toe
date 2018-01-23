@@ -29,15 +29,19 @@ const checkWin = function () {
       if (game.gameBoard[solution[0]] === 'X' && game.gameBoard[solution[1]] === 'X' && game.gameBoard[solution[2]] === 'X') {
         // console.log('X Wins!')
         gameWon('X')
+        $('.grid-box').removeClass('clickable')
         // store.player.wins = store.player.wins + 1
         // ui.updateStats()
-      }
-
-      if (game.gameBoard[solution[0]] === 'O' && game.gameBoard[solution[1]] === 'O' && game.gameBoard[solution[2]] === 'O') {
+      } else if (game.gameBoard[solution[0]] === 'O' && game.gameBoard[solution[1]] === 'O' && game.gameBoard[solution[2]] === 'O') {
         // console.log('O Wins!')
         gameWon('O')
+        $('.grid-box').removeClass('clickable')
         // store.player.losses = store.player.losses + 1
         // ui.updateStats()
+      } else {
+        if (game.gameBoard.every((item) => { return item !== null })) {
+          ui.headsUp('Its a tie!')
+        }
       }
     })
     // add a check for a tied game
@@ -51,23 +55,11 @@ const getLocation = function (element) {
   return $(element).attr('data-grid-position')
 }
 
-const sendCellObj = function (index, value) {
-  const cell = {
-    'game': {
-      'cell': {
-        'index': index,
-        'value': value
-      },
-      'over': false
-    }
-  }
-  return cell
-}
-
-const logGameChange = function (data) {
-  store.updateGame.cell = game.gameBoard
-  // console.log('CELL>>>' + store.updateGame.cell)
-  api.updateGame(data)
+// TODO: make sure im sending the correct object the API
+const logGameChange = function () {
+  // console.log(store.updateCell)
+  const updateObj = store.updateCell
+  api.updateGame(updateObj)
     .then(ui.updateGameSuccess)
     .catch(ui.apiFailure)
 }
@@ -77,6 +69,5 @@ module.exports = {
   solutions,
   checkWin,
   game,
-  logGameChange,
-  sendCellObj
+  logGameChange
 }

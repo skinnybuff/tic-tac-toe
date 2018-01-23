@@ -91,6 +91,7 @@ form {
     list-style: none;
     margin-top: 30px;
   }
+
 }
 
 .grid-box {
@@ -205,6 +206,29 @@ main {
   img {
     margin-bottom: 30px;
   }
+}
+
+#saved-games-display {
+  background: $dark-main-color;
+  color: $main-color;
+  height: 350px;
+  margin-top: 30px;
+  overflow-y: scroll;
+  padding: 2px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding-left: 40px;
+
+      &:nth-child(even) {
+        color: $grey;
+      }
+    }
+  }
+
 }
 
 .style-hori {

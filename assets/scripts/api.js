@@ -19,7 +19,7 @@ const signIn = (data) => {
 }
 
 const updatePassword = (data) => {
-  console.log(store.user.id)
+  // //console.log(store.user.id)
   return $.ajax({
     url: config.apiOrigin + '/change-password/' + store.user.id,
     method: 'PATCH',
@@ -50,7 +50,7 @@ const newGame = () => {
   })
 }
 
-const getGames = (data) => {
+const getGames = () => {
   return $.ajax({
     url: config.apiOrigin + '/games',
     method: 'GET',
@@ -61,6 +61,8 @@ const getGames = (data) => {
 }
 
 const updateGame = (data) => {
+  // TODO: data is undefined on update cell
+  // console.log(data)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.updateGame.id,
     method: 'PATCH',
@@ -71,6 +73,16 @@ const updateGame = (data) => {
   })
 }
 
+const savedGames = (data) => {
+  return $.ajax({
+    url: config.apiOrigin + '/games[?over=false]',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -78,5 +90,6 @@ module.exports = {
   signOut,
   getGames,
   newGame,
-  updateGame
+  updateGame,
+  savedGames
 }

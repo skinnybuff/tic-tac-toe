@@ -7,23 +7,41 @@ const store = require('./store')
 
 const onStart = function () {
   $('#sign-out').hide()
+  // TODO: get calc game states data to display
   $('#stats-data').hide()
   $('#sign-up').hide()
   $('#change-password').hide()
+  // TODO: hide games list on start after debugged
+  // $('#saved-games-display').hide()
   ui.headsUp('Please Login or Sign up.')
-  $('.grid-box').toggleClass('clickable')
+}
+
+const sendCellObj = function (element) {
+  let cellVal = ''
+  engine.playerXturn ? cellVal = 'x' : cellVal = 'o'
+  const cell = {
+    'game': {
+      'cell': {
+        'index': engine.getLocation(element),
+        'value': cellVal
+      },
+      'over': engine.game.gameOver
+    }
+  }
+  // console.log(cell)
+  store.updateCell = cell
 }
 
 const onCheckBox = function () {
   // only run if player is logged in
-  if (store.user !== undefined) {
+  if (store.user !== undefined && !engine.game.gameOver) {
   // console.log(engine.playerXturn)
   // check if the position is occupiued
     if (engine.game.gameBoard[engine.getLocation(this)] !== null) {
       $('.heads-up p').text('please select and empty box.')
     } else {
       if (engine.game.playerXturn) {
-        // for player X update gamedisplay, gamboard, ui & change player turn
+        // for player X update gamedisplay, gamboard, ui & change player turnconsole.l
         $('.heads-up p').text('its player O\'s turn to move.')
         $(this).html(ui.userTokenX)
         engine.game.gameBoard[engine.getLocation(this)] = 'X'
@@ -36,28 +54,27 @@ const onCheckBox = function () {
         engine.game.playerXturn = !engine.game.playerXturn
       }
     }
-    engine.logGameChange()
     engine.checkWin()
+    sendCellObj(this)
+    engine.logGameChange(engine.getLocation(this), engine.game.gameBoard[engine.getLocation(this)], engine.game.gameOver)
   }
-  // console.log(engine.game.gameBoard)
-  // console.log(engine.game.getLocation(this))
-  // console.log(engine.game.playerXturn)
 }
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
   // console.log(data)
-  console.log(store.player)
+  // console.log(store.player)
   api.signIn(data)
     .then(ui.signInSuccess)
+    // .then(api.gestGames)
     .catch(ui.apiFailure)
 }
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log(data)
+  // console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.apiFailure)
@@ -66,18 +83,22 @@ const onSignUp = function (event) {
 const onSignOut = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log(data)
+  // console.log(data)
   api.signOut(data)
     .then(ui.signOutSuccess)
     .catch(ui.apiFailure)
 }
 
-const onChangePassword = function () {
+const onChangePassword = function (event) {
+  event.preventDefault()
   ui.showPasswordChange()
 }
 
 const resetGame = function () {
   if (store.user) {
+    api.getGames()
+      .then(ui.getGamesSuccess)
+      .catch(ui.apiFailure)
     api.newGame()
       .then(ui.resetSuccess)
       .catch(ui.apiFailure)
@@ -92,19 +113,41 @@ const resetGame = function () {
 const onGetGames = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log(data)
+  // console.log(data)
   api.getGames(data)
     .then(ui.getGamesSuccess)
     .catch(ui.apiFailure)
 }
 
 const getGameStats = function () {
-  return 'game stats'
+  // console.log('get stats')
+  if (store.user) {
+    $('#games-saved-btn').toggleClass('inactive')
+    $('#game-stats-btn').toggleClass('inactive')
+    $('#saved-games-display').hide()
+    $('#meta-data').show()
+  }
 }
 
+// TODO: display the games list
 const getSavedGames = function () {
-  return 'saved game list'
+  // console.log('saved games')
+  if (store.user) {
+    $('#games-saved-btn').toggleClass('inactive')
+    $('#game-stats-btn').toggleClass('inactive')
+    $('#meta-data').hide()
+    $('#saved-games-display').show()
+  }
+  // api.savedGames()
+  //   .then(ui.savedSuccess)
+  //   .catch(ui.apiFailure)
 }
+
+// create x-template
+// create fillin html tag
+// loop over the data foreach
+// attach data point to fillin
+// append to template
 
 module.exports = {
   onStart,
@@ -116,5 +159,6 @@ module.exports = {
   onGetGames,
   onChangePassword,
   getGameStats,
-  getSavedGames
+  getSavedGames,
+  sendCellObj
 }
