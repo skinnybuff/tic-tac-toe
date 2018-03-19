@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+
+      <div class="wrapper">
+        <header>
+          <h1>
+            Tic-Tac-Toe
+          </h1>
+        </header>
+        <section class="mast-head">
+          <!-- <img src="https://picsum.photos/200/220" alt="Game Logo"/> -->
+          <form id="sign-in">
+            <input type="text" name="credentials[email]" placeholder="email"/>
+            <input type="password" name="credentials[password]" placeholder="password"/>
+            <br/>
+            <button type="submit">Log In</button>
+          </form>
+          <form id="sign-out">
+            <label><a id="settings-btn">settings</a></label>
+            <br>
+            <button type="submit">Log Out</button>
+          </form>
+          <a id="sign-up-toggle">Sign Up</a>
+          <form id="sign-up">
+            <input type="text" name="credentials[email]" placeholder="email"/>
+            <input type="password" name="credentials[password]" placeholder="password"/>
+            <input type="password" name="credentials[password_confirmation]" placeholder="retype password"/>
+            <button type="submit">Sign Up</button>
+          </form>
+          <br>
+          <form id="change-password">
+            <input type="text" name="credentials[old]" placeholder="old password"/>
+            <input type="text" name="credentials[new]" placeholder="new password"/>
+            <button type="submit">Change</button>
+          </form>
+        </section>
+        <div class="center-col">
+          <main>
+            <div class = "grid-box clickable" data-grid-position="0">
+            </div>
+            <div class = "grid-box clickable grid-style style-vert" data-grid-position="1">
+            </div>
+            <div class = "grid-box clickable" data-grid-position="2">
+            </div>
+            <div class = "grid-box clickable grid-style style-hori" data-grid-position="3">
+            </div>
+            <div class = "grid-box clickable grid-style" data-grid-position="4">
+            </div>
+            <div class = "grid-box clickable grid-style style-hori" data-grid-position="5">
+            </div>
+            <div class = "grid-box clickable" data-grid-position="6">
+            </div>
+            <div class = "grid-box clickable grid-style style-vert" data-grid-position="7">
+            </div>
+            <div class = "grid-box clickable" data-grid-position="8">
+            </div>
+          </main>
+          <section class ="heads-up">
+            <p>
+            </p>
+          </section>
+        </div>
+        <section class="game-meta">
+          <a id="game-stats-btn">game stats</a><a class="inactive" id="games-saved-btn">saved games</a>
+          <div id="meta-data">
+            <ul id="player-meta">
+              <li>Player Id: <span  id="player-ID-display"> </span></li>
+              <li>Games Played: <span id="total-games-display"> </span></li>
+              <li>Game Id: <span id="current-game-ID"> </span></li>
+            </ul>
+            <ul id="stats-data">
+              <li>Wins: <span id="win-display">0</span></li>
+              <li>Losses: <span id="loss-display">0</span></li>
+              <li>Ties: <span id="tie-display">0</span></li>
+            </ul>
+          </div>
+          <div id="saved-games-display">
+            <ul>
+              <li>gmae id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+              <li>game id</li>
+            </ul>
+          </div>
+          <div class="button-wrapper">
+            <button id="new-game-btn">
+              New Game
+            </button>
+        </div>
+        </section>
+      </div> <!-- close wrapper -->
+      <template>
+          <li></li>
+      </template>
+</html>
