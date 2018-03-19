@@ -6,14 +6,17 @@ $grey: #ddd;
 $dark-grey: #555;
 $main-color: #2d649e;
 $dark-main-color: #1a2d54;
-$accent-color: #67ea85;
+// $accent-color: #67ea85;
+$accent-color: #68e8c8;
+$neon-purple: #d772ff;
 $transparent: rgba(0, 0, 0, 0);
 $rubik: 'Rubik Mono One', sans-serif;
 $roboto: 'Roboto Condensed', sans-serif;
 
 @mixin section-style {
-  border: 2px solid $dark-main-color;
-  box-shadow: 4px 4px $dark-main-color;
+  background: linear-gradient(rgba(255, 255, 255, .35), $grey 70%);
+  border: 2px solid $accent-color;
+  box-shadow: 4px 4px 12px $accent-color;
 }
 
 a {
@@ -32,6 +35,8 @@ a {
 
 body {
   background: linear-gradient($main-color, $dark-main-color);
+  background-image: url('https://raw.githubusercontent.com/skinnybuff/tic-tac-toe/graphicBG/img/neonBg.jpg');
+  background-size: cover;
   font-family: $roboto;
   font-size: 18px;
   height: 1000px;
@@ -80,7 +85,7 @@ form {
 
 .game-meta {
   @include section-style;
-  color: $grey;
+  color: $dark-main-color;
   float: left;
   height: 500px;
   min-width: 250px;
@@ -111,10 +116,11 @@ form {
 }
 
 header {
-  color: $accent-color;
+  color: #fff;
   font-family: $rubik;
+  margin: 100px 0px 65px;
   text-align: center;
-  text-shadow: 3px  3px $grey;
+  text-shadow: 2px 2px $neon-purple, 6px 6px 32px $neon-purple;
 
   h1 {
     font-size: 8rem;
@@ -122,7 +128,7 @@ header {
 }
 
 .heads-up {
-  background: $grey;
+  border: 1px solid $dark-main-color;
   color: $main-color;
   margin: 0 auto;
   min-height: 40px;
@@ -130,14 +136,16 @@ header {
   padding: 4px 10px;
   width: 50%;
 
-  p {
-    float: left;
-  }
-
   button {
     float: right;
     height: 40px;
   }
+
+  p {
+    margin: 6px;
+    text-align: center;
+  }
+
 }
 
 img {
@@ -153,7 +161,7 @@ input {
   background: $transparent;
   border: 0;
   border-bottom: 1px solid $accent-color;
-  color: $grey;
+  color: $dark-main-color;
   margin: 4px;
   padding: 4px;
   width: 200px;
@@ -161,7 +169,7 @@ input {
 
 label {
   border-bottom: 1px solid $accent-color;
-  color: $grey;
+  color: $dark-main-color;
   line-height: 16px;
   width: 200px;
 
@@ -176,12 +184,13 @@ label {
 }
 
 .letter-display {
-  color: $grey;
+  color: #fff;
   font-family: $rubik;
   font-size: 4.5em;
   font-weight: 800;
   margin: 0 auto;
   text-align: center;
+  text-shadow: 2px 2px $accent-color, 0px 6px 32px $accent-color;
   width: 100%;
 }
 
@@ -196,7 +205,7 @@ main {
   float: left;
   min-height: 500px;
   min-width: 250px;
-  padding: 20px;
+  padding: 80px 20px 20px;
   width: 20%;
 
   a {
@@ -205,6 +214,12 @@ main {
 
   img {
     margin-bottom: 30px;
+  }
+
+  form {
+    input[placeholder] {
+      color: $main-color;
+    }
   }
 }
 
@@ -244,4 +259,10 @@ main {
 .wrapper {
   margin: 0 auto;
   width: 80%;
+}
+
+#sign-in {
+  button{
+    width: 200px;
+  }
 }
